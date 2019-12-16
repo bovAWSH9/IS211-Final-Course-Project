@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block head %}
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard.css') }}">
+<title> Dashboard</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+     <a href="/new_post">Create New Post</a>
+    <div class="table">
+        <div class="table-header">
+           <div class="header__item"><a  class="filter__link" href="#" >Title</a></div>
+             <div class="header__item"><a  class="filter__link" href="#">Author</a></div>
+             <div class="header__item"><a  class="filter__link" href="#">Published Date</a></div>
+             <div class="header__item"><a  class="filter__link" href="#">Action</a></div>
+        </div>
+        <div class="table-content">
+             {% for idx, date, title, text, author in posts %}
+            <div class="table-row">
+                <div class="table-data">{{ title}}</div>
+                <div class="table-data">{{ author}}</div>
+                <div class="table-data">{{ date}}</div>
+                <div class="table-data">
+                      <a href="/Delete/{{idx}}">Delete</a>
+                      <a href="/Edit/{{idx}}">Edit</a>
+                </div>
+
+
+            </div>
+             {% endfor %}
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}
